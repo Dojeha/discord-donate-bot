@@ -1,0 +1,7 @@
+{
+	"port": 5080,
+	"allowDonate": true,
+	"minDonateAmount": 1000,
+	"maxDonateAmount": 99999000,
+	"maxDonateMessageLength": 128
+}

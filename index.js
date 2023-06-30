@@ -1,12 +1,13 @@
 const express = require("express");
 const { WebSocketServer } = require("ws");
 const { Client, GatewayIntentBits } = require("discord.js");
-
-const commandDonate = require("./commandDonate");
+const config = require("./config.json");
 
 require("dotenv").config();
 
 const TOKEN = process.env.DISCORD_BOT_TOKEN;
+
+const commandDonate = require("./commandDonate");
 
 const client = new Client({
     "intents": [
@@ -34,7 +35,6 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 const app = express();
-const port = 5080;
 
 app.disable("x-powered-by");
 
@@ -42,8 +42,8 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
 
-app.listen(port, "127.0.0.1", () => {
-    console.log(`http://localhost:${port}/`);
+app.listen(config.port, "127.0.0.1", () => {
+    console.log(`http://localhost:${config.port}/`);
 });
 
 client.login(TOKEN);
