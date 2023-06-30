@@ -33,4 +33,17 @@ client.on("interactionCreate", async (interaction) => {
     }
 });
 
+const app = express();
+const port = 5080;
+
+app.disable("x-powered-by");
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/views/index.html");
+});
+
+app.listen(port, "127.0.0.1", () => {
+    console.log(`http://localhost:${port}/`);
+});
+
 client.login(TOKEN);
